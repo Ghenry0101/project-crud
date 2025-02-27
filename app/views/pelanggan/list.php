@@ -36,7 +36,7 @@ $pelanggan = [
             <td><img src="<?= $p['foto'] ?>" alt="Foto Pelanggan" width="50"></td>
                 <td>
                     <a href="index.php?page=detail&id=<?= $baris['pelangganid'] ?>"><button type="button" class="btn btn-danger">Detail</button></a>
-                    <a href="edit.php"><button type="button" class="btn btn-warning">Edit</button></a>
+                    <a href="index.php?page=edit&id=<?= $baris['pelangganid'] ?>"><button type="button" class="btn btn-warning">Edit</button></a>
                     <a href="index.php?page=delete&id=<?= $baris['pelangganid'] ?>" onclick="return confirm('Apakah Anda yakin?')"><button type="button" class="btn btn-dark">Hapus</button></a>
                 </td>
             </tr>

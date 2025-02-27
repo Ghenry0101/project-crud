@@ -1,21 +1,5 @@
 <?php
-// Contoh data pelanggan
-$pelanggan = [
-    ['id' => 1, 'nama' => 'John Doe', 'no_telepon' => '08123456789', 'alamat' => 'Jl. Merpati No.12, Jakarta', 'foto' => 'foto2.jpg'],
-    ['id' => 2, 'nama' => 'Kayla', 'no_telepon' => '085xxxxxx', 'alamat' => 'Jl. Contoh No.1, Bandung', 'foto' => 'foto1.jpg'],
-    ['id' => 3, 'nama' => 'Michael', 'no_telepon' => '085xxxxxx', 'alamat' => 'Jl. Contoh No.2, Surabaya', 'foto' => 'foto3.jpg']
-];
 
-$id = $_GET['id'];
-$detail = array_filter($pelanggan, function($p) use ($id) {
-    return $p['id'] == $id;
-});
-$detail = array_values($detail)[0];
-
-if(!isset($detail)) {
-    header("Location: index.php");
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -42,24 +26,25 @@ if(!isset($detail)) {
                                 <h5><?php echo $detail['nama']; ?></h5>
                             </div>
                             <div class="col-md-8">
-                                <form action="index.php?action=postEdit" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" name="txt_id" value="<?php echo $detail['id']; ?>">
+                                            <!-- hati hati disinilah terjadi kesalahan -->
+                                <form action="index.php?page=post_edit" method="POST" enctype="multipart/form-data">
+                                    <input type="hidden" name="txt_id" value="<?= $data['pelangganid']; ?>">
                                     
                                     <div class="mb-3">
                                         <label class="form-label">Nama</label>
-                                        <input type="text" class="form-control" name="txt_nama" value="<?php echo $detail['nama']; ?>" required>
+                                        <input type="text" class="form-control" name="txt_nama" value="<?= $data['namapelanggan']; ?>" required>
                                     </div>
                                     
                                     <div class="mb-3">
                                         <label class="form-label">No. Telepon</label>
-                                        <input type="text" class="form-control" name="txt_telp" value="<?php echo $detail['no_telepon']; ?>" required>
+                                        <input type="text" class="form-control" name="txt_telp" value="<?= $data['nomortelepon']; ?>" required>
                                     </div>
                                     
                                     <div class="mb-3">
                                         <label class="form-label">Alamat</label>
-                                        <textarea class="form-control" name="txt_alamat" rows="3" required><?php echo $detail['alamat']; ?></textarea>
+                                        <textarea class="form-control" name="txt_alamat" rows="3" required><?= $data['alamat']; ?></textarea>
                                     </div>
-                                    
+
                                     <div class="mb-3">
                                         <label class="form-label">Foto Baru (Opsional)</label>
                                         <input type="file" class="form-control" name="foto" accept="image/*">
@@ -67,7 +52,7 @@ if(!isset($detail)) {
                                     </div>
                                     
                                     <div class="d-grid gap-2">
-                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                        <button type="submit" class="btn btn-primary" name="sbt_update">Simpan Perubahan</button>
                                         <a href="index.php" class="btn btn-secondary">Kembali</a>
                                     </div>
                                 </form>

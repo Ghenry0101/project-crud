@@ -10,6 +10,7 @@
 <div class="container mt-5">
         <h2 class="text-center">Tambah Data Pengguna</h2>
         <div class="card shadow-sm p-4 mt-3">
+            <!-- hati hati disinilah terjadi kesalahan -->
             <form action="index.php?page=simpan" method="POST"> 
                 <div class="mb-3">
                     <label for="nama" class="form-label">id pelanggan</label>

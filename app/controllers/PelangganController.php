@@ -42,5 +42,25 @@ class PelangganController{
         //redirect ke list
         $this->getlist();
     }
+
+    public function getEdit($id){
+        $data = $this->model->ambilData($id);//ambil data berdasarkan id
+        include "../app/views/pelanggan/edit.php";//mannggil edit
+    }
+
+    public function postEdit(){
+            $data = [
+                'id' => $_POST['txt_id'],
+                'nama' => $_POST['txt_nama'],
+                'notelp' => $_POST['txt_telp'],
+                'alamat' => $_POST['txt_alamat']
+            ];
+        $this->model->editData($data);//manggil method edit data
+        //redirect ke list
+        $this->getlist();
+    }
+
+
+
 }
 ?>

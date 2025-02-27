@@ -59,5 +59,16 @@ class Pelanggan{
         $query->execute($data);
         return $query;
     }
+
+    public function editData($data){
+        $sql ="UPDATE $this->tabel 
+                SET namapelanggan = :nama, 
+                    nomortelepon = :notelp, 
+                    alamat = :alamat 
+                WHERE pelangganid = :id";
+
+            $query = $this->dbkoneksi->prepare($sql);
+        $query->execute($data);
+        return $query;
+    }
 }
-?>
