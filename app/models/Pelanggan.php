@@ -60,15 +60,16 @@ class Pelanggan{
         return $query;
     }
 
-    public function editData($data){
-        $sql ="UPDATE $this->tabel 
+    public function editData($data)
+    {
+        $sql = "UPDATE $this->tabel 
                 SET namapelanggan = :nama, 
                     nomortelepon = :notelp, 
-                    gambarprofil = :fl_foto,
+                    gambarprofil = :foto,
                     alamat = :alamat 
                 WHERE pelangganid = :id";
 
-            $query = $this->dbkoneksi->prepare($sql);
+        $query = $this->dbkoneksi->prepare($sql);
         $query->execute($data);
         return $query;
     }
