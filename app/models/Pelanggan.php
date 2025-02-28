@@ -42,8 +42,8 @@ class Pelanggan{
 
     public function tambahData($data){
         $sql ="INSERT INTO $this->tabel 
-        (pelangganid, namapelanggan, nomortelepon, alamat) 
-        VALUES (:id, :nama, :notelp, :alamat)";
+        (pelangganid, namapelanggan, nomortelepon, alamat, gambarprofil) 
+        VALUES (:id, :nama, :notelp, :alamat, :foto)";
 
         $query = $this->dbkoneksi->prepare($sql);
         $query->execute($data);
@@ -52,10 +52,10 @@ class Pelanggan{
 
     public function updateData($data){
         $sql ="INSERT INTO $this->tabel 
-        (pelangganid, namapelanggan, nomortelepon, alamat) 
-        VALUES (:id, :nama, :notelp, :alamat)";
+        (pelangganid, namapelanggan, nomortelepon, alamat, gambarprofil) 
+        VALUES (:id, :nama, :notelp, :alamat, :foto)";
 
-        $query = $this->dbkoneksi->prepare($sql);
+        $query = $this->dbkoneksi->prepare($sql); 
         $query->execute($data);
         return $query;
     }
@@ -64,6 +64,7 @@ class Pelanggan{
         $sql ="UPDATE $this->tabel 
                 SET namapelanggan = :nama, 
                     nomortelepon = :notelp, 
+                    gambarprofil = :fl_foto,
                     alamat = :alamat 
                 WHERE pelangganid = :id";
 

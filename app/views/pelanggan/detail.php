@@ -18,7 +18,7 @@ $pelanggan = [
 <div class="container mt-5">
         <h2 class="text-center">Detail Pelanggan</h2>
         <div class="card shadow-sm p-4 mt-3 text-center">
-            <img src="<?= $data['foto'] ?>" alt="Foto Profil" class="img-thumbnail mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+            <img src="<?= $data['gambarprofil'] ?>" alt="Foto Profil" class="img-thumbnail mb-3" style="width: 150px; height: 150px; object-fit: cover,; align-self: center;">
             <table class="table table-bordered">
                 <tr>
                     <th>Nama</th>
@@ -27,7 +27,7 @@ $pelanggan = [
                 <tr>
                     <th>Telepon</th>
                     <td><?= $data['nomortelepon'] ?></td>
-                </tr>
+                </tr> 
                 <tr>
                     <th>Alamat</th>
                     <td><?= $data['alamat'] ?></td>

@@ -31,9 +31,9 @@ $pelanggan = [
             <?php foreach ($data as $baris): ?>
             <tr>
             <td><?= $baris['pelangganid']   ?></td>
-            <td><?= $baris['namapelanggan']   ?></td>
+            <td><?= $baris['namapelanggan']   ?></td> 
             <td><?= $baris['nomortelepon']   ?></td>
-            <td><img src="<?= $p['foto'] ?>" alt="Foto Pelanggan" width="50"></td>
+            <td><img src="<?= $baris['gambarprofil'] ?>" alt="Foto Pelanggan" width="50"></td>
                 <td>
                     <a href="index.php?page=detail&id=<?= $baris['pelangganid'] ?>"><button type="button" class="btn btn-danger">Detail</button></a>
                     <a href="index.php?page=edit&id=<?= $baris['pelangganid'] ?>"><button type="button" class="btn btn-warning">Edit</button></a>

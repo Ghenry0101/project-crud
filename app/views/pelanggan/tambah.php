@@ -11,7 +11,7 @@
         <h2 class="text-center">Tambah Data Pengguna</h2>
         <div class="card shadow-sm p-4 mt-3">
             <!-- hati hati disinilah terjadi kesalahan -->
-            <form action="index.php?page=simpan" method="POST"> 
+            <form action="index.php?page=simpan" method="POST" enctype="multipart/form-data"> 
                 <div class="mb-3">
                     <label for="nama" class="form-label">id pelanggan</label>
                     <input type="text" class="form-control" id="nama" name="txt_id" required>

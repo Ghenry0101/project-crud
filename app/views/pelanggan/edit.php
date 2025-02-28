@@ -20,11 +20,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row mb-4">
-                            <div class="col-md-4 text-center">
-                                <!-- Menampilkan foto current -->
-                                <img src="uploads/<?php echo $detail['foto']; ?>" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
-                                <h5><?php echo $detail['nama']; ?></h5>
-                            </div>
+                            
                             <div class="col-md-8">
                                             <!-- hati hati disinilah terjadi kesalahan -->
                                 <form action="index.php?page=post_edit" method="POST" enctype="multipart/form-data">
@@ -46,9 +42,12 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label">Foto Baru (Opsional)</label>
-                                        <input type="file" class="form-control" name="foto" accept="image/*">
-                                        <small class="text-muted">Biarkan kosong jika tidak ingin mengubah foto</small>
+                                        <label for="formFile" class="form-label">Foto Profile</label>
+                                        <?php if(!empty($data['gambarprofil'])): ?>
+                                            <img src="<?= $data['gambarprofil'] ?>" alt="Current photo" class="img-thumbnail mb-2" style="max-width: 200px"><br>
+                                        <?php endif; ?>
+                                        <input class="form-control" type="file" id="formFile" name="fl_foto">
+                                        <input type="hidden" name="foto_lama" value="<?= $data['gambarprofil'] ?>">
                                     </div>
                                     
                                     <div class="d-grid gap-2">
