@@ -107,7 +107,7 @@ class PelangganController{
         $extension = strtolower(pathinfo($_FILES["fl_foto"]["name"], PATHINFO_EXTENSION));
 
         if (!in_array($extension, $allowed_types)) {
-            echo "<script>alert('File tidak bisa diterima, hanya JPG dan PNG saja!'); window.history.back();</script>";
+            echo "<script>alert('File tidak bisa diterima, hanya JPG, JPEG, dan PNG saja!'); window.history.back();</script>";
             exit();
         }
 
