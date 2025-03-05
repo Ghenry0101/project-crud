@@ -27,7 +27,7 @@
                                     
                                     <div class="mb-3">
                                         <label class="form-label">Harga</label>
-                                        <input type="number" class="form-control" name="txt_harga" value="<?= $data['harga']; ?>" required>
+                                        <input type="number" class="form-control" name="txt_harga" value="<?= $data['Harga']; ?>" required>
                                     </div>
                                     
                                     <div class="mb-3">
@@ -41,7 +41,7 @@
                                             <img src="<?= $data['gambar'] ?>" alt="Current photo" class="img-thumbnail mb-2" style="max-width: 200px"><br>
                                         <?php endif; ?>
                                         <input class="form-control" type="file" id="formFile" name="fl_gambar">
-                                        <input type="hidden" name="gambar_lama" value="<?= $data['gambar'] ?>">
+                                        <input type="hidden" name="gambar_lama" value="<?= $data['gambarproduk'] ?>">
                                     </div>
                                     
                                     <div class="d-grid gap-2">

@@ -32,7 +32,7 @@
                             
                             <div class="card-body">
                                 <h5 class="card-title"><?= htmlspecialchars($item['namaproduk'] ?? 'Nama Produk Tidak Tersedia') ?></h5>
-                                <p class="card-text">Harga: Rp<?= number_format(floatval($item['harga'] ?? 0), 0, ',', '.') ?></p>
+                                <p class="card-text">Harga: Rp<?= number_format(floatval($item['Harga'] ?? 0), 0, ',', '.') ?></p>
                                 <p class="card-text">Stok: <?= intval($item['stok'] ?? 0) ?> pcs</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">

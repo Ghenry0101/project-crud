@@ -22,7 +22,7 @@
             </tr>
             <tr>
                 <th>Harga</th>
-                <td>Rp <?= number_format($data['harga'], 0, ',', '.') ?></td>
+                <td>Rp <?= number_format($data['Harga'], 0, ',', '.') ?></td>
             </tr> 
             <tr>
                 <th>Stok</th>
