@@ -34,7 +34,7 @@ $pelanggan = [
                 </tr>
             </table>
         </div>
-        <a href="index.php" class="btn btn-secondary mt-3">Kembali</a>
+        <a href="index.php?c=pelanggan&page=list" class="btn btn-secondary mt-3">Kembali</a>
     </div>
 
 </body>

@@ -11,7 +11,7 @@
         <h2 class="text-center">Tambah Produk</h2>
         <div class="card shadow-sm p-4 mt-3">
             <!-- Form untuk menambah produk -->
-            <form action="index.php?page=simpan_produk" method="POST" enctype="multipart/form-data"> 
+            <form action="index.php?c=produk&page=simpan" method="POST" enctype="multipart/form-data"> 
                 <div class="mb-3">
                     <label for="produk_id" class="form-label">ID Produk</label>
                     <input type="text" class="form-control" id="produk_id" name="txt_id" required>

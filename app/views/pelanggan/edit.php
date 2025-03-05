@@ -52,7 +52,7 @@
                                     
                                     <div class="d-grid gap-2">
                                         <button type="submit" class="btn btn-primary" name="sbt_update">Simpan Perubahan</button>
-                                        <a href="index.php" class="btn btn-secondary">Kembali</a>
+                                        <a href="index.php?c=pelanggan&page=list" class="btn btn-secondary">Kembali</a>
                                     </div>
                                 </form>
                             </div>

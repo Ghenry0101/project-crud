@@ -11,7 +11,7 @@
         <h2 class="text-center">Tambah Data Pengguna</h2>
         <div class="card shadow-sm p-4 mt-3">
             <!-- hati hati disinilah terjadi kesalahan -->
-            <form action="index.php?page=simpan" method="POST" enctype="multipart/form-data"> 
+            <form action="index.php?c=pelanggan&page=simpan" method="POST" enctype="multipart/form-data"> 
                 <div class="mb-3">
                     <label for="nama" class="form-label">id pelanggan</label>
                     <input type="text" class="form-control" id="nama" name="txt_id" required>
@@ -32,10 +32,10 @@
                     <label for="formFile" class="form-label">Masukkan Foto Profile</label>
                     <input class="form-control" type="file" id="formFile" name="fl_foto">
                 </div>
-                <button type="submit" class="btn btn-primary w-100" name="sbt_simpan">Tambah</button>
+                <button type="submit" class="btn btn-primary w-100" name="sbt_simpan" >Tambah</button>
             </form>
         </div>
-        <a href="index.php" class="btn btn-secondary mt-3">Kembali</a>
+        <a href="index.php?c=pelanggan&page=list" class="btn btn-secondary mt-3">Kembali</a>
     </div>
 </body>
 </html>

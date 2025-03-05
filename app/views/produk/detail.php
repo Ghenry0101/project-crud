@@ -30,7 +30,7 @@
             </tr>
         </table>
     </div>
-    <a href="index.php?page=produk" class="btn btn-secondary mt-3">Kembali</a>
+    <a href="index.php?c=" class="btn btn-secondary mt-3">Kembali</a>
 </div>
 
 </body>

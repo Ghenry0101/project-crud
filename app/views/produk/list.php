@@ -13,7 +13,7 @@
 <body>
 <div class="container mt-4">
         <h1 class="mb-4">Daftar Produk</h1>
-        <a href="index.php?page=tambah_produk" class="btn btn-primary mb-3">Tambah Produk</a>
+        <a href="index.php?c=produk&page=tambah" class="btn btn-primary mb-3">Tambah Produk</a>
         
         <div class="album py-3 bg-light">
             <div class="container">
@@ -36,9 +36,9 @@
                                 <p class="card-text">Stok: <?= $item['stok'] ?> pcs</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="index.php?page=detail_produk&id=<?= $item['produkid'] ?>" class="btn btn-sm btn-outline-secondary">View</a>
-                                        <a href="index.php?page=edit_produk&id=<?= $item['produkid'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                        <a href="index.php?page=delete_produk&id=<?= $item['produkid'] ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')" class="btn btn-sm btn-outline-danger">Delete</a>
+                                        <a href="index.php?c=produk&page=detail&id=<?= $item['produkid'] ?>" class="btn btn-sm btn-outline-secondary">View</a>
+                                        <a href="index.php?c=produk&page=edit&id=<?= $item['produkid'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                        <a href="index.php?c=produk&page=hapus&id=<?= $item['produkid'] ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')" class="btn btn-sm btn-outline-danger">Delete</a>
                                     </div>
                                     <small class="text-muted">ID: <?= $item['produkid'] ?></small>
                                 </div>

@@ -16,7 +16,7 @@ $pelanggan = [
 </head>
 <body>
     <h1>Daftar Pelanggan</h1>
-    <a href="index.php?page=tambah"><button type="button" class="btn btn-primary">Tambah Pelanggan</button></a>
+    <a href="index.php?c=pelanggaan&page=tambah"><button type="button" class="btn btn-primary">Tambah Pelanggan</button></a>
     <table border="1" class="table table-striped">
         <thead>
             <tr>
@@ -35,9 +35,9 @@ $pelanggan = [
             <td><?= $baris['nomortelepon']   ?></td>
             <td><img src="<?= $baris['gambarprofil'] ?>" alt="Foto Pelanggan" width="50"></td>
                 <td>
-                    <a href="index.php?page=detail&id=<?= $baris['pelangganid'] ?>"><button type="button" class="btn btn-danger">Detail</button></a>
-                    <a href="index.php?page=edit&id=<?= $baris['pelangganid'] ?>"><button type="button" class="btn btn-warning">Edit</button></a>
-                    <a href="index.php?page=delete&id=<?= $baris['pelangganid'] ?>" onclick="return confirm('Apakah Anda yakin?')"><button type="button" class="btn btn-dark">Hapus</button></a>
+                    <a href="index.php?c=pelanggan&page=detail&id=<?= $baris['pelangganid'] ?>"><button type="button" class="btn btn-danger">Detail</button></a>
+                    <a href="index.php?c=pelanggan&page=edit&id=<?= $baris['pelangganid'] ?>"><button type="button" class="btn btn-warning">Edit</button></a>
+                    <a href="index.php?c=pelanggan&page=hapus&id=<?= $baris['pelangganid'] ?>" onclick="return confirm('Apakah Anda yakin?')"><button type="button" class="btn btn-dark">Hapus</button></a>
                 </td>
             </tr>
             <?php endforeach; ?>
