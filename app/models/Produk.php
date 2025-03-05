@@ -41,13 +41,39 @@ class Produk{
     }
 
     public function tambahData($data){
-        $sql ="INSERT INTO $this->tabel 
-        (produkid, namaproduk, harga, stok, gambarproduk) 
-        VALUES (:id, :nama, :harga, :stok, :gambar)";
+        try {
+            // Check if the product ID already exists
+            $checkSql = "SELECT COUNT(*) FROM $this->tabel WHERE produkid = :id";
+            $checkQuery = $this->dbkoneksi->prepare($checkSql);
+            $checkQuery->execute(['id' => $data['id']]);
+            $exists = $checkQuery->fetchColumn();
 
-        $query = $this->dbkoneksi->prepare($sql);
-        $query->execute($data);
-        return $query;
+            if ($exists > 0) {
+                // If product ID exists, generate a new unique ID
+                $maxIdSql = "SELECT MAX(produkid) FROM $this->tabel";
+                $maxIdQuery = $this->dbkoneksi->query($maxIdSql);
+                $maxId = $maxIdQuery->fetchColumn();
+                $data['id'] = $maxId + 1;
+            }
+
+            $sql ="INSERT INTO $this->tabel 
+            (produkid, namaproduk, harga, stok, gambarproduk) 
+            VALUES (:id, :nama, :harga, :stok, :gambar)";
+
+            $query = $this->dbkoneksi->prepare($sql);
+            $query->execute([
+                'id' => $data['id'],
+                'nama' => $data['nama'],
+                'harga' => $data['harga'],
+                'stok' => $data['stok'],
+                'gambar' => $data['gambar']
+            ]);
+            return $query;
+        } catch (PDOException $e) {
+            // Log the error or handle it appropriately
+            error_log("Error adding product: " . $e->getMessage());
+            throw $e;
+        }
     }
 
     public function editData($data)
@@ -64,3 +90,4 @@ class Produk{
         return $query;
     }
 }
+?>

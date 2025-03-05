@@ -23,7 +23,7 @@
                     <div class="col">
                         <div class="card shadow-sm">
                             <?php if (!empty($item['gambarproduk'])): ?>
-                                <img src="<?= $item['gambarproduk'] ?>" class="card-img-top" width="100%" height="225" alt="<?= $item['namaproduk'] ?>">
+                                <img src="<?= htmlspecialchars($item['gambarproduk']) ?>" class="card-img-top" width="100%" height="225" alt="<?= htmlspecialchars($item['namaproduk'] ?? 'Produk') ?>">
                             <?php else: ?>
                                 <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 225px;">
                                     <span>No Image</span>
@@ -31,16 +31,16 @@
                             <?php endif; ?>
                             
                             <div class="card-body">
-                                <h5 class="card-title"><?= $item['namaproduk'] ?></h5>
-                                <p class="card-text">Harga: Rp<?= number_format($item['harga'], 0, ',', '.') ?></p>
-                                <p class="card-text">Stok: <?= $item['stok'] ?> pcs</p>
+                                <h5 class="card-title"><?= htmlspecialchars($item['namaproduk'] ?? 'Nama Produk Tidak Tersedia') ?></h5>
+                                <p class="card-text">Harga: Rp<?= number_format(floatval($item['harga'] ?? 0), 0, ',', '.') ?></p>
+                                <p class="card-text">Stok: <?= intval($item['stok'] ?? 0) ?> pcs</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="index.php?c=produk&page=detail&id=<?= $item['produkid'] ?>" class="btn btn-sm btn-outline-secondary">View</a>
-                                        <a href="index.php?c=produk&page=edit&id=<?= $item['produkid'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                        <a href="index.php?c=produk&page=hapus&id=<?= $item['produkid'] ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')" class="btn btn-sm btn-outline-danger">Delete</a>
+                                        <a href="index.php?c=produk&page=detail&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" class="btn btn-sm btn-outline-secondary">View</a>
+                                        <a href="index.php?c=produk&page=edit&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                        <a href="index.php?c=produk&page=delete&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')" class="btn btn-sm btn-outline-danger">Delete</a>
                                     </div>
-                                    <small class="text-muted">ID: <?= $item['produkid'] ?></small>
+                                    <small class="text-muted">ID: <?= htmlspecialchars($item['produkid'] ?? 'N/A') ?></small>
                                 </div>
                             </div>
                         </div>

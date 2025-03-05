@@ -37,7 +37,7 @@ $pelanggan = [
                 <td>
                     <a href="index.php?c=pelanggan&page=detail&id=<?= $baris['pelangganid'] ?>"><button type="button" class="btn btn-danger">Detail</button></a>
                     <a href="index.php?c=pelanggan&page=edit&id=<?= $baris['pelangganid'] ?>"><button type="button" class="btn btn-warning">Edit</button></a>
-                    <a href="index.php?c=pelanggan&page=hapus&id=<?= $baris['pelangganid'] ?>" onclick="return confirm('Apakah Anda yakin?')"><button type="button" class="btn btn-dark">Hapus</button></a>
+                    <a href="index.php?c=pelanggan&page=delete&id=<?= $baris['pelangganid'] ?>" onclick="return confirm('Apakah Anda yakin?')"><button type="button" class="btn btn-dark">Hapus</button></a>
                 </td>
             </tr>
             <?php endforeach; ?>

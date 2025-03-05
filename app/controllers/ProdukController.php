@@ -42,43 +42,49 @@ class ProdukController{
 
     public function postTambah()
     {
-        // Proses unggah file gambar dengan penamaan unik yang aman
-        $gambar = '';
-        if (isset($_FILES['fl_gambar']) && $_FILES['fl_gambar']['error'] == 0) {
-            $target_dir = "uploads/";
-            if (!file_exists($target_dir)) {
-                mkdir($target_dir, 0777, true);
-            }
-            // Mendapatkan ekstensi file
-            $extension = pathinfo($_FILES["fl_gambar"]["name"], PATHINFO_EXTENSION);
-            
-            // Validasi jenis file
-            $allowed_types = ['jpg', 'jpeg', 'png']; // Hanya izinkan JPG & PNG
-            if (!in_array(strtolower($extension), $allowed_types)) {
-                echo "<script>alert('File tidak bisa diterima, hanya JPG dan PNG saja!'); window.history.back();</script>";
-                exit();
-            }
-            
-            // Membuat nama file unik dan aman menggunakan bin2hex(random_bytes(16))
-            $uniqueName = bin2hex(random_bytes(5)) . '.' . $extension;
-            $target_file = $target_dir . $uniqueName;
+        try {
+            // Proses unggah file gambar dengan penamaan unik yang aman
+            $gambar = '';
+            if (isset($_FILES['fl_gambar']) && $_FILES['fl_gambar']['error'] == 0) {
+                $target_dir = "uploads/";
+                if (!file_exists($target_dir)) {
+                    mkdir($target_dir, 0777, true);
+                }
+                // Mendapatkan ekstensi file
+                $extension = pathinfo($_FILES["fl_gambar"]["name"], PATHINFO_EXTENSION);
+                
+                // Validasi jenis file
+                $allowed_types = ['jpg', 'jpeg', 'png']; // Hanya izinkan JPG & PNG
+                if (!in_array(strtolower($extension), $allowed_types)) {
+                    echo "<script>alert('File tidak bisa diterima, hanya JPG dan PNG saja!'); window.history.back();</script>";
+                    exit();
+                }
+                
+                // Membuat nama file unik dan aman menggunakan bin2hex(random_bytes(16))
+                $uniqueName = bin2hex(random_bytes(5)) . '.' . $extension;
+                $target_file = $target_dir . $uniqueName;
 
-            if (move_uploaded_file($_FILES["fl_gambar"]["tmp_name"], $target_file)) {
-                $gambar = $target_file;
+                if (move_uploaded_file($_FILES["fl_gambar"]["tmp_name"], $target_file)) {
+                    $gambar = $target_file;
+                }
             }
+
+            // Menyiapkan data untuk disimpan ke database
+            $data = [
+                'id'     => $_POST['txt_id'],
+                'nama'   => $_POST['txt_nama'],
+                'harga'  => $_POST['txt_harga'],
+                'stok'   => $_POST['txt_stok'],
+                'gambar' => $gambar
+            ];
+
+            $this->model->tambahData($data);
+            $this->getlist();
+        } catch (Exception $e) {
+            // Handle any exceptions
+            echo "<script>alert('Error: " . htmlspecialchars($e->getMessage()) . "'); window.history.back();</script>";
+            exit();
         }
-
-        // Menyiapkan data untuk disimpan ke database
-        $data = [
-            'id'     => $_POST['txt_id'],
-            'nama'   => $_POST['txt_nama'],
-            'harga'  => $_POST['txt_harga'],
-            'stok'   => $_POST['txt_stok'],
-            'gambar' => $gambar
-        ];
-
-        $this->model->tambahData($data);
-        $this->getlist();
     }
 
     public function getEdit($id){
