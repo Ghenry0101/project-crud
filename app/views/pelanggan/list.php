@@ -16,7 +16,7 @@ $pelanggan = [
 </head>
 <body>
     <h1>Daftar Pelanggan</h1>
-    <a href="index.php?c=pelanggaan&page=tambah"><button type="button" class="btn btn-primary">Tambah Pelanggan</button></a>
+    <a href="index.php?c=pelanggan&page=tambah"><button type="button" class="btn btn-primary">Tambah Pelanggan</button></a>
     <table border="1" class="table table-striped">
         <thead>
             <tr>

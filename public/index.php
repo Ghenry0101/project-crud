@@ -2,6 +2,7 @@
 require_once "../app/controllers/PelangganController.php";
 require_once "../app/controllers/ProdukController.php";
 
+
 $controllerName = isset($_GET['c']) ? strtolower($_GET['c']) : '';
 $action = isset($_GET['page']) ? $_GET['page'] : 'list';
 

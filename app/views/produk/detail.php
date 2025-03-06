@@ -14,7 +14,7 @@
 <div class="container mt-5">
     <h2 class="text-center">Detail Produk</h2>
     <div class="card shadow-sm p-4 mt-3 text-center">
-        <img src="<?= $data['gambarproduk'] ?>" alt="Foto Produk" class="img-thumbnail mb-3" style="width: 200px; height: 200px; object-fit: cover;">
+        <img src="<?= $data['gambarproduk'] ?>" alt="Foto Produk" class="img-thumbnail mb-3" style="width: 200px; height: 200px; object-fit: cover; align-self: center;">
         <table class="table table-bordered">
             <tr>
                 <th>Nama Produk</th>
