@@ -13,7 +13,7 @@
 <body>
 <div class="container mt-4">
         <h1 class="mb-4">Daftar Produk</h1>
-        <a href="index.php?c=produk&page=tambah" class="btn btn-primary mb-3">Tambah Produk</a>
+        <a href="index.php?c=produk&page=tambah" class="btn btn-primary mb-3"><?php if (!isset($hide_actions)): ?>Tambah Produk<?php endif; ?></a>
         
         <div class="album py-3 bg-light">
             <div class="container">
@@ -37,8 +37,10 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="index.php?c=produk&page=detail&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" class="btn btn-sm btn-outline-secondary">View</a>
+                                        <?php if (!isset($hide_actions)): ?>    
                                         <a href="index.php?c=produk&page=edit&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
                                         <a href="index.php?c=produk&page=delete&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')" class="btn btn-sm btn-outline-danger">Delete</a>
+                                        <?php endif; ?>
                                     </div>
                                     <small class="text-muted">ID: <?= htmlspecialchars($item['produkid'] ?? 'N/A') ?></small>
                                 </div>
