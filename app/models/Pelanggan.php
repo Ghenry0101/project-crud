@@ -1,5 +1,5 @@
 <?php
-include "../config/Database.php";
+require_once __DIR__ . "/../../config/Database.php";
 class Pelanggan{
     private $tabel = "pelanggan";
     private $dbkoneksi;
@@ -72,5 +72,22 @@ class Pelanggan{
         $query = $this->dbkoneksi->prepare($sql);
         $query->execute($data);
         return $query;
+    }
+
+    //method untuk login pelanggan berdasarkan ID dan nama pelanggan
+    public function login($pelangganid, $namapelanggan){
+        $sql = "SELECT * FROM $this->tabel WHERE pelangganid = :pelangganid AND namapelanggan = :namapelanggan";
+        $query = $this->dbkoneksi->prepare($sql);
+        $query->bindParam(':pelangganid', $pelangganid);
+        $query->bindParam(':namapelanggan', $namapelanggan);
+        $query->execute();
+        $hasil = $query->fetch(PDO::FETCH_ASSOC);
+        
+        // Debugging: Tampilkan query dan hasil
+        // echo "Query: $sql<br>";
+        // echo "ID: $pelangganid, Nama: $namapelanggan<br>";
+        // echo "Hasil: "; print_r($hasil); exit;
+        
+        return $hasil;
     }
 }

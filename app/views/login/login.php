@@ -10,14 +10,14 @@
 <div class="container mt-5">
     <h2 class="text-center">Login</h2>
     <div class="card shadow-sm p-4 mt-3">
-        <form action="index.php?c=login&page=proses" method="POST">
+        <form action="/27rpla-15-kasir/public/index.php?c=login&page=proses" method="POST">
             <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="txt_username" required>
+                <label for="pelangganid" class="form-label">ID Pelanggan</label>
+                <input type="text" class="form-control" id="pelangganid" name="txt_pelangganid" required>
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="txt_password" required>
+                <label for="namapelanggan" class="form-label">Nama Pelanggan</label>
+                <input type="text" class="form-control" id="namapelanggan" name="txt_namapelanggan" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
