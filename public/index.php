@@ -1,7 +1,7 @@
 <?php
 require_once "../app/controllers/PelangganController.php";
 require_once "../app/controllers/ProdukController.php";
-
+require_once "../app/controllers/PenjualanController.php";
 
 $controllerName = isset($_GET['c']) ? strtolower($_GET['c']) : '';
 $action = isset($_GET['page']) ? $_GET['page'] : 'list';
@@ -11,6 +11,8 @@ if (!$controllerName) {
     $controller = new ProdukController();
     $controller->getList();
     exit;
+}elseif ($controllerName === 'penjualan') {
+    $controller = new PenjualanController();
 }
 
 // Determine controller
