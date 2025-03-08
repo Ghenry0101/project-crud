@@ -28,9 +28,17 @@ class LoginController {
                 $_SESSION['pelanggan_id'] = $pelanggan['pelangganid'];
                 $_SESSION['pelanggan_nama'] = $pelanggan['namapelanggan'];
                 $_SESSION['is_logged_in'] = true;
-
-                // Redirect ke halaman penjualan melalui controller dengan path absolut
-                header("Location: /27rpla-15-kasir/public/index.php?c=penjualan&page=list");
+                
+                // Cek apakah pengguna adalah admin
+                if (strtolower($pelanggan['namapelanggan']) === 'admin') {
+                    $_SESSION['is_admin'] = true;
+                    // Redirect ke halaman admin
+                    header("Location: /27rpla-15-kasir/public/index.php?c=produk&page=list");
+                } else {
+                    $_SESSION['is_admin'] = false;
+                    // Redirect ke halaman penjualan untuk pengguna biasa
+                    header("Location: /27rpla-15-kasir/public/index.php?c=penjualan&page=list");
+                }
                 exit;
             } else {
                 // Login gagal

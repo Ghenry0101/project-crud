@@ -12,6 +12,63 @@
 </head>
 <body>
 <div class="container mt-4">
+        <?php
+        // Mulai session jika belum dimulai
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        // Tampilkan menu navigasi jika pengguna adalah admin
+        if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): 
+        ?>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Admin Panel</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?c=produk&page=list">Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?c=pelanggan&page=list">Pelanggan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.php?c=penjualan&page=list">Penjualan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?c=login&page=logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <?php else: ?>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Toko Online</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.php?c=penjualan&page=list">Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?c=penjualan&page=keranjang">Keranjang</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?c=login&page=logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <?php endif; ?>
+
         <h1 class="mb-4">Daftar Penjualan</h1>
         
         <div class="album py-3 bg-light">

@@ -12,8 +12,45 @@
 </head>
 <body>
 <div class="container mt-4">
+        <?php
+        // Mulai session jika belum dimulai
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        // Tampilkan menu navigasi
+        if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): 
+        ?>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Admin Panel</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.php?c=produk&page=list">Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?c=pelanggan&page=list">Pelanggan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?c=penjualan&page=list">Penjualan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?c=login&page=logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <?php endif; ?>
+
         <h1 class="mb-4">Daftar Produk</h1>
-        <a href="index.php?c=produk&page=tambah" class="btn btn-primary mb-3"><?php if (!isset($hide_actions)): ?>Tambah Produk<?php endif; ?></a>
+        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+        <a href="index.php?c=produk&page=tambah" class="btn btn-primary mb-3">Tambah Produk</a>
+        <?php endif; ?>
         
         <div class="album py-3 bg-light">
             <div class="container">
@@ -37,7 +74,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="index.php?c=produk&page=detail&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" class="btn btn-sm btn-outline-secondary">View</a>
-                                        <?php if (!isset($hide_actions)): ?>    
+                                        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>    
                                         <a href="index.php?c=produk&page=edit&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
                                         <a href="index.php?c=produk&page=delete&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')" class="btn btn-sm btn-outline-danger">Delete</a>
                                         <?php endif; ?>
