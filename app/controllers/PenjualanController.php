@@ -36,6 +36,4 @@ class PenjualanController {
             echo "Terjadi kesalahan: " . $e->getMessage();
         }
     }
-
-    // Other methods for handling sales...
 }

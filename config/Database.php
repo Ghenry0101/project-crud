@@ -1,5 +1,4 @@
 <?php
-// Check if the class already exists before declaring it
 if (!class_exists('Database')) {
     class Database{
         private $dbms = "mysql";

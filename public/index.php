@@ -7,14 +7,14 @@ require_once "../app/controllers/LoginController.php";
 $controllerName = isset($_GET['c']) ? strtolower($_GET['c']) : '';
 $action = isset($_GET['page']) ? $_GET['page'] : 'list';
 
-// Root URL: default to ProdukController::getList()
+// URL Root: default ke ProdukController::getList()
 if (!$controllerName) {
     $controller = new ProdukController();
     $controller->getList();
     exit;
 }
 
-// Determine controller
+// Menentukan controller
 if ($controllerName === 'pelanggan') {
     $controller = new PelangganController();
 } elseif ($controllerName === 'produk') {
@@ -22,19 +22,19 @@ if ($controllerName === 'pelanggan') {
 } elseif ($controllerName === 'penjualan') {
     $controller = new PenjualanController();
     
-    // Handle penjualan actions separately
+    // Menangani aksi penjualan secara terpisah
     if ($action === 'list') {
         $controller->getList();
         exit;
     } elseif ($action === 'detail' && isset($_GET['id'])) {
-        // Redirect to produk detail for now
+        // Redirect ke detail produk untuk sementara
         header("Location: index.php?c=produk&page=detail&id=" . $_GET['id']);
         exit;
     }
 } elseif ($controllerName === 'login') {
     $controller = new LoginController();
     
-    // Handle login actions separately
+    // Menangani aksi login secara terpisah
     if ($action === 'login') {
         $controller->getLogin();
         exit;
@@ -49,13 +49,13 @@ if ($controllerName === 'pelanggan') {
         exit;
     }
 } else {
-    // Fallback to ProdukController if invalid
+    // Kembali ke ProdukController jika tidak valid
     $controller = new ProdukController();
     $controller->getList();
     exit;
 }
 
-// Route actions for other controllers
+// Mengarahkan aksi untuk controller lainnya
 if ($action === 'list') {
     $controller->getList();
 } elseif ($action === 'detail' && isset($_GET['id'])) {

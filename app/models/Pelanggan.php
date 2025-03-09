@@ -83,7 +83,7 @@ class Pelanggan{
         $query->execute();
         $hasil = $query->fetch(PDO::FETCH_ASSOC);
         
-        // Debugging: Tampilkan query dan hasil
+        // Debugging: Menampilkan query dan hasil
         // echo "Query: $sql<br>";
         // echo "ID: $pelangganid, Nama: $namapelanggan<br>";
         // echo "Hasil: "; print_r($hasil); exit;

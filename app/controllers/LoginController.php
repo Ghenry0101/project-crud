@@ -17,7 +17,7 @@ class LoginController {
             $pelangganid = $_POST['txt_pelangganid'];
             $namapelanggan = $_POST['txt_namapelanggan'];
 
-            // Debugging: Tampilkan data yang dikirim
+            // Debugging: Menampilkan data yang dikirim
             // echo "ID: $pelangganid, Nama: $namapelanggan"; exit;
 
             $pelanggan = $this->pelangganModel->login($pelangganid, $namapelanggan);

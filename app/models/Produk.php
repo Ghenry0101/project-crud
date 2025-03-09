@@ -70,7 +70,7 @@ class Produk{
             ]);
             return $query;
         } catch (PDOException $e) {
-            // Log the error or handle it appropriately
+            // 
             error_log("Error adding product: " . $e->getMessage());
             throw $e;
         }

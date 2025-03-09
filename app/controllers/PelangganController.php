@@ -53,7 +53,7 @@ class PelangganController{
             }
             // Mendapatkan ekstensi file
             $extension = pathinfo($_FILES["fl_foto"]["name"], PATHINFO_EXTENSION);
-            // Membuat nama file unik dan aman menggunakan bin2hex(random_bytes(16))
+            // Membuat nama file unik dan aman menggunakan bin2hex(random_bytes(5))
             $uniqueName = bin2hex(random_bytes(5)) . '.' . $extension;
             $target_file = $target_dir . $uniqueName;
 
@@ -113,7 +113,7 @@ class PelangganController{
 
             // Mendapatkan ekstensi file
             $extension = pathinfo($_FILES["fl_foto"]["name"], PATHINFO_EXTENSION);
-            // Membuat nama file unik dan aman menggunakan bin2hex(random_bytes(16))
+            // Membuat nama file unik dan aman menggunakan bin2hex(random_bytes(5))
             $uniqueName = bin2hex(random_bytes(5)) . '.' . $extension;
             $target_file = $target_dir . $uniqueName;
 
