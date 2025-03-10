@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riwayat Pembelian</title>
+    <title>Checkout</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
@@ -40,7 +40,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <a class="nav-link" href="index.php?c=penjualan&page=keranjang">Keranjang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?c=penjualan&page=riwayat">Riwayat</a>
+                        <a class="nav-link" href="index.php?c=penjualan&page=riwayat">Riwayat</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?c=login&page=logout">Logout</a>
@@ -65,7 +65,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <a class="nav-link" href="index.php?c=penjualan&page=keranjang">Keranjang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php?c=penjualan&page=riwayat">Riwayat</a>
+                        <a class="nav-link" href="index.php?c=penjualan&page=riwayat">Riwayat</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?c=login&page=logout">Logout</a>
@@ -76,47 +76,60 @@ if (session_status() === PHP_SESSION_NONE) {
     </nav>
     <?php endif; ?>
 
-    <h1 class="mb-4">Riwayat Pembelian</h1>
-    
-    <?php if (empty($riwayat)): ?>
-    <div class="alert alert-info">
-        Anda belum memiliki riwayat pembelian. <a href="index.php?c=penjualan&page=list" class="alert-link">Mulai berbelanja</a>.
-    </div>
-    <?php else: ?>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th>No</th>
-                    <th>Tanggal</th>
-                    <th>Total</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
-                $no = 1;
-                foreach ($riwayat as $item): 
-                ?>
-                <tr>
-                    <td><?= $no++ ?></td>
-                    <td><?= date('d-m-Y', strtotime($item['tanggalpenjualan'])) ?></td>
-                    <td>Rp <?= number_format($item['totalharga'], 0, ',', '.') ?></td>
-                    <td>
-                        <a href="index.php?c=penjualan&page=detail_riwayat&id=<?= $item['penjualanid'] ?>" class="btn btn-sm btn-info">Detail</a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-    <?php endif; ?>
-    
-    <div class="mt-3">
-        <a href="index.php?c=penjualan&page=list" class="btn btn-primary">Kembali ke Produk</a>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Checkout</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Ringkasan Pesanan</h5>
+                    
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Produk</th>
+                                <th>Harga</th>
+                                <th>Jumlah</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($keranjang as $item): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($item['namaproduk']) ?></td>
+                                <td>Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>
+                                <td><?= $item['jumlah'] ?></td>
+                                <td>Rp <?= number_format($item['subtotal'], 0, ',', '.') ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                        <tfoot>
+                            <tr class="table-primary">
+                                <th colspan="3" class="text-end">Total</th>
+                                <th>Rp <?= number_format($total, 0, ',', '.') ?></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    
+                    <div class="mt-4">
+                        <h5 class="card-title">Informasi Pelanggan</h5>
+                        <p><strong>Nama:</strong> <?= htmlspecialchars($_SESSION['pelanggan_nama']) ?></p>
+                        <p><strong>ID Pelanggan:</strong> <?= htmlspecialchars($_SESSION['pelanggan_id']) ?></p>
+                    </div>
+                    
+                    <form action="index.php?c=penjualan&page=checkout" method="POST" class="mt-4">
+                        <div class="d-flex justify-content-between">
+                            <a href="index.php?c=penjualan&page=keranjang" class="btn btn-secondary">Kembali ke Keranjang</a>
+                            <button type="submit" name="checkout" class="btn btn-success">Konfirmasi Pesanan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
-</html>
+</html> 

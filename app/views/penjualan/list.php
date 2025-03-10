@@ -94,7 +94,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="index.php?c=penjualan&page=detail&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" class="btn btn-sm btn-outline-secondary">View</a>
-                                            <a href="#" class="btn btn-sm btn-outline-primary">Keranjang</a>
+                                            <a href="index.php?c=penjualan&page=tambah_ke_keranjang&id=<?= htmlspecialchars($item['produkid'] ?? '') ?>" class="btn btn-sm btn-outline-primary">Keranjang</a>
                                         </div>
                                         <small class="text-muted">ID: <?= htmlspecialchars($item['produkid'] ?? 'N/A') ?></small>
                                     </div>

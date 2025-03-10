@@ -30,6 +30,33 @@ if ($controllerName === 'pelanggan') {
         // Redirect ke detail produk untuk sementara
         header("Location: index.php?c=produk&page=detail&id=" . $_GET['id']);
         exit;
+    } elseif ($action === 'keranjang') {
+        $controller->getKeranjang();
+        exit;
+    } elseif ($action === 'tambah_ke_keranjang') {
+        $controller->tambahKeKeranjang();
+        exit;
+    } elseif ($action === 'update_keranjang') {
+        $controller->updateKeranjang();
+        exit;
+    } elseif ($action === 'update_keranjang_ajax') {
+        $controller->updateKeranjangAjax();
+        exit;
+    } elseif ($action === 'hapus_dari_keranjang') {
+        $controller->hapusDariKeranjang();
+        exit;
+    } elseif ($action === 'kosongkan_keranjang') {
+        $controller->kosongkanKeranjang();
+        exit;
+    } elseif ($action === 'checkout') {
+        $controller->checkout();
+        exit;
+    } elseif ($action === 'riwayat') {
+        $controller->getRiwayat();
+        exit;
+    } elseif ($action === 'detail_riwayat') {
+        $controller->getDetailRiwayat();
+        exit;
     }
 } elseif ($controllerName === 'login') {
     $controller = new LoginController();
