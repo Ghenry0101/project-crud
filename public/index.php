@@ -7,10 +7,10 @@ require_once "../app/controllers/LoginController.php";
 $controllerName = isset($_GET['c']) ? strtolower($_GET['c']) : '';
 $action = isset($_GET['page']) ? $_GET['page'] : 'list';
 
-// URL Root: default ke ProdukController::getList()
+// URL Root: default ke LoginController::getLogin()
 if (!$controllerName) {
-    $controller = new ProdukController();
-    $controller->getList();
+    $controller = new LoginController();
+    $controller->getLogin();
     exit;
 }
 
