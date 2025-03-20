@@ -54,4 +54,41 @@ class LoginController {
         header("Location: index.php?c=login&page=login");
         exit;
     }
+
+    public function getRegister() {
+        include __DIR__ . "/../views/login/register.php";
+    }
+
+    public function prosesRegister() {
+        $pelangganid = $_POST['txt_pelangganid'];
+        $namapelanggan = $_POST['txt_namapelanggan'];
+        $alamat = $_POST['txt_alamat'];
+
+        // Validasi input
+        if (empty($pelangganid) || empty($namapelanggan) || empty($alamat)) {
+            $_SESSION['error'] = "Semua field harus diisi!";
+            header("Location: index.php?c=login&page=register");
+            exit;
+        }
+
+        // Cek apakah ID sudah digunakan
+        $existingPelanggan = $this->pelangganModel->getById($pelangganid);
+        if ($existingPelanggan) {
+            $_SESSION['error'] = "ID Pelanggan sudah digunakan!";
+            header("Location: index.php?c=login&page=register");
+            exit;
+        }
+
+        // Proses registrasi
+        $result = $this->pelangganModel->register($pelangganid, $namapelanggan, $alamat);
+        
+        if ($result) {
+            $_SESSION['success'] = "Registrasi berhasil! Silakan login.";
+            header("Location: index.php?c=login&page=login");
+        } else {
+            $_SESSION['error'] = "Gagal melakukan registrasi!";
+            header("Location: index.php?c=login&page=register");
+        }
+        exit;
+    }
 } 

@@ -35,7 +35,7 @@
                 <button type="submit" class="btn btn-primary w-100" name="sbt_simpan">Tambah</button>
             </form>
         </div>
-        <a href="index.php?page=produk" class="btn btn-secondary mt-3">Kembali</a>
+        <a href="index.php?c=produk&page=list" class="btn btn-secondary mt-3">Kembali</a>
     </div>
 </body>
 </html>

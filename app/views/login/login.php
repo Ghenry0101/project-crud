@@ -21,6 +21,10 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
+        <p class="text-center">
+        Belum punya akun? 
+        <a href="index.php?c=login&page=register" class="btn btn-link">Daftar disini</a>
+        </p>
     </div>
 </div>
 </body>

@@ -65,8 +65,14 @@ if ($controllerName === 'pelanggan') {
     if ($action === 'login') {
         $controller->getLogin();
         exit;
+    } elseif ($action === 'register') {
+        $controller->getRegister();
+        exit;
     } elseif ($action === 'proses') {
         $controller->prosesLogin();
+        exit;
+    } elseif ($action === 'proses_register') {
+        $controller->prosesRegister();
         exit;
     } elseif ($action === 'logout') {
         $controller->logout();

@@ -61,6 +61,9 @@
                             <a class="nav-link" href="index.php?c=penjualan&page=keranjang">Keranjang</a>
                         </li>
                         <li class="nav-item">
+                        <a class="nav-link" href="index.php?c=penjualan&page=riwayat">Riwayat</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="index.php?c=login&page=logout">Logout</a>
                         </li>
                     </ul>

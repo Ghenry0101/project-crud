@@ -90,4 +90,24 @@ class Pelanggan{
         
         return $hasil;
     }
+
+    public function register($pelangganid, $namapelanggan, $alamat) {
+        $sql = "INSERT INTO pelanggan (pelangganid, namapelanggan, alamat, gambarprofil) 
+                VALUES (?, ?, ?, 'default.jpg')";
+        
+        $stmt = $this->dbkoneksi->prepare($sql);
+        $stmt->bind_param("iss", $pelangganid, $namapelanggan, $alamat);
+        
+        return $stmt->execute();
+    }
+
+    public function getById($pelangganid) {
+        $sql = "SELECT * FROM pelanggan WHERE pelangganid = ?";
+        $stmt = $this->dbkoneksi->prepare($sql);
+        $stmt->bind_param("i", $pelangganid);
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
 }
